@@ -48,3 +48,6 @@ gem "omniauth", ">= 1.1.3"
 gem "omniauth-facebook"
 gem "cancan", ">= 1.6.9"
 gem "rolify", ">= 3.2.0"
+gem "figaro", ">= 0.6.3"
+gem "better_errors", ">= 0.7.2", :group => :development
+gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri_19, :rbx]
