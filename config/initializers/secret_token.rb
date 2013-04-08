@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Moments::Application.config.secret_token = 'a4166521a7401bdd0b0c9533b0f5f94bf2edfc743c19005119089fe16a229df3e02e22a3d434cc0a9802a85fae896ecfa201b2b29151eea5e98f8fff2c717054'
+Moments::Application.config.secret_token = 'cdd28196b55a1b9575f69e69a66387d932151ae5fff8905570d18cb3ed3fb5fbecf68d77f2fd6730f759fbd6b6d036aa8d83e5a4787ee5a425ce9d3698b3fc30'
