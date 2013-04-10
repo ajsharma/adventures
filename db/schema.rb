@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130408053239) do
+ActiveRecord::Schema.define(:version => 20130410222512) do
+
+  create_table "moments", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "author_id"
+    t.string   "token"
+    t.boolean  "trash"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "moments", ["author_id"], :name => "index_moments_on_author_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
