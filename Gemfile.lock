@@ -38,6 +38,7 @@ GEM
       sass (~> 3.2)
     builder (3.0.4)
     cancan (1.6.9)
+    chunky_png (1.2.8)
     coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -46,6 +47,12 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.2)
+    compass (0.12.2)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+    compass-rails (1.0.3)
+      compass (>= 0.12.2, < 0.14)
     daemons (1.1.9)
     debug_inspector (0.0.2)
     erubis (2.7.0)
@@ -59,6 +66,7 @@ GEM
       bundler (~> 1.0)
       rails (>= 3, < 5)
     formatador (0.2.4)
+    fssm (0.2.10)
     guard (1.7.0)
       formatador (>= 0.2.4)
       listen (>= 0.6.0)
@@ -176,6 +184,7 @@ DEPENDENCIES
   bootstrap-sass (>= 2.3.0.0)
   cancan (>= 1.6.9)
   coffee-rails (~> 3.2.1)
+  compass-rails
   figaro (>= 0.6.3)
   guard-bundler (>= 1.0.0)
   guard-rails (>= 0.4.0)
