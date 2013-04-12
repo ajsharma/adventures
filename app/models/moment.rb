@@ -36,9 +36,13 @@ class Moment < ActiveRecord::Base
   def assign_unique_token
     unless(self.token)
       begin
-        self.token = SecureRandom.hex(5) # or whatever you chose like UUID tools
+        self.token = rand(36**8).to_s(36)
       end while self.class.exists?(:token => token)
     end
+  end
+
+  def id_as_hash
+    return self.id.to_s(36)
   end
 
 end

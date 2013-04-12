@@ -2,6 +2,8 @@
 
 <table>
   <tr>
+    <th>Id</th>
+    <th>Hash</th>
     <th>Name</th>
     <th>Description</th>
     <th>Author</th>
@@ -13,6 +15,8 @@
 
 <% @moments.each do |moment| %>
   <tr>
+    <td><%= moment.id %></td>
+    <td><%= moment.id_as_hash %></td>
     <td><%= moment.name %></td>
     <td><%= moment.description %></td>
     <td><%= link_to moment.author.name, moment.author %></td>
