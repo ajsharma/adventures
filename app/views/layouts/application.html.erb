@@ -10,7 +10,6 @@
     <%= yield(:head) %>
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
-    <div id="wrap">
       <!-- fixed nav bar -->
       <div class="navbar navbar-fixed-top">
         <nav class="navbar-inner">
@@ -33,8 +32,6 @@
           </div>
         </div> <%# end of .container %>
       </div> <%# end of #main %>
-      <div id="push"></div> <%# for sticky footer %>
-    </div> <%# end of #wrap %>
-    <%= render 'layouts/footer' %>
+      <%= render 'layouts/footer' %>
   </body>
 </html>
