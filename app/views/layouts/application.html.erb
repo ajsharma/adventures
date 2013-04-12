@@ -10,26 +10,31 @@
     <%= yield(:head) %>
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
-    <div class="navbar navbar-fixed-top">
-      <nav class="navbar-inner">
-        <div class="container">
-          <%= render 'layouts/navigation' %>
-        </div>
-      </nav>
-    </div>
-    <div id="main" role="main">
-      <div class="container">
-        <div class="content">
-           <div class="row">
-            <div class="span12">
-              <%= render 'layouts/messages' %>
-              <%= yield %>
-            </div>
+    <div id="wrap">
+      <!-- fixed nav bar -->
+      <div class="navbar navbar-fixed-top">
+        <nav class="navbar-inner">
+          <div class="container">
+            <%= render 'layouts/navigation' %>
           </div>
-          <footer>
-          </footer>
-        </div>
-      </div> <!--! end of .container -->
-    </div> <!--! end of #main -->
+        </nav>
+      </div>
+      <div id="main" role="main">
+        <div class="container">
+          <div class="content">
+             <div class="row">
+              <div class="span12">
+                <%= render 'layouts/messages' %>
+                <%= yield %>
+              </div>
+            </div>
+            <footer>
+            </footer>
+          </div>
+        </div> <%# end of .container %>
+      </div> <%# end of #main %>
+      <div id="push"></div> <%# for sticky footer %>
+    </div> <%# end of #wrap %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
