@@ -34,7 +34,7 @@ class MomentsController < ApplicationController
 
   # GET /moments/1/edit
   def edit
-    @moment = Moment.find(params[:id])
+    @moment = Moment.find_by_muddle(params[:id])
   end
 
   # POST /moments
@@ -60,7 +60,7 @@ class MomentsController < ApplicationController
   # PUT /moments/1
   # PUT /moments/1.json
   def update
-    @moment = Moment.find(params[:id])
+    @moment = Moment.find_by_muddle(params[:id])
 
     respond_to do |format|
       if @moment.update_attributes(params[:moment])
@@ -76,7 +76,7 @@ class MomentsController < ApplicationController
   # DELETE /moments/1
   # DELETE /moments/1.json
   def destroy
-    @moment = Moment.find(params[:id])
+    @moment = Moment.find_by_muddle(params[:id])
     @moment.destroy
 
     respond_to do |format|
