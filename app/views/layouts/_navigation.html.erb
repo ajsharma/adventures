@@ -3,6 +3,12 @@
 
   <% if user_signed_in? %>
     <li>
+    <%= link_to 'New', new_moment_path %>
+    </li>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <li>
     <%= link_to 'Logout', signout_path %>
     </li>
   <% else %>
