@@ -45,8 +45,7 @@ class MomentsController < ApplicationController
   # POST /moments
   # POST /moments.json
   def create
-    @moment = Moment.new(params[:moment])
-    @moment.author_id = current_user.id
+    @moment = current_user.moments.build(params[:moment])
 
     # Alternative?: current_user.moments.create(params[:app])
 
