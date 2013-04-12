@@ -4,21 +4,12 @@
   <tr>
     <th>Id</th>
     <th>Name</th>
-    <th>Description</th>
-    <th>Author</th>
-    <th>Trash</th>
-    <th></th> <!-- edit -->
-    <th></th> <!-- destroy -->
   </tr>
 
 <% @moments.each do |moment| %>
   <tr>
     <td><%= moment.id %>(<%= moment.muddle %>)</td>
     <td><%= link_to moment.name, muddle_moment_path(moment) %></td>
-    <td><%= moment.description %></td>
-    <td><%= link_to moment.author.name, moment.author %></td>
-    <td><%= link_to 'Edit', edit_moment_path(moment) %></td>
-    <td><%= link_to 'Destroy', moment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

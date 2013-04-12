@@ -15,4 +15,5 @@
 </p>
 
 <%= link_to 'Edit', edit_moment_path(@moment) %> |
+<%= link_to 'Destroy', @moment, method: :delete, data: { confirm: 'Are you sure?' } %> | 
 <%= link_to 'Back', moments_path %>
