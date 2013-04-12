@@ -1,0 +1,29 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+
+#footer {
+  padding-bottom: $base-padding;
+  padding-top: $base-padding;
+
+  ul {
+    list-style: none;
+    margin: 0;
+  }
+
+  a {
+    @include unstyled-link;
+    color: #aaaaaa;
+  }
+}
+
+.footer-left {
+  float: left;
+}
+
+.footer-right {
+  float: right;
+}
+
+.footer-logo {
+  font-weight: bold;
+}
