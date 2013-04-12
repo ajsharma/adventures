@@ -1,5 +1,8 @@
 class MomentsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :new, :create]
+  before_filter :find_moment_by_muddle, :except => [:index, :new, :create] 
+  before_filter :restrict_access_to_author, :only => [:edit, :update, :destroy] 
+  before_filter :restrict_access_to_author_or_token, :only => [:show] 
 
   # GET /moments
   # GET /moments.json
@@ -15,7 +18,7 @@ class MomentsController < ApplicationController
   # GET /m/a23?t=1ad2
   # GET /m/a23?t=1ad2.json
   def show
-    @moment = Moment.find_by_muddle(params[:muddle])
+    @moment ||= Moment.find_by_muddle(params[:muddle])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,7 +39,7 @@ class MomentsController < ApplicationController
 
   # GET /moments/1/edit
   def edit
-    @moment = Moment.find_by_muddle(params[:id])
+    @moment ||= Moment.find_by_muddle(params[:id])
   end
 
   # POST /moments
@@ -44,7 +47,6 @@ class MomentsController < ApplicationController
   def create
     @moment = Moment.new(params[:moment])
     @moment.author_id = current_user.id
-    @moment.trash = false
 
     # Alternative?: current_user.moments.create(params[:app])
 
@@ -62,7 +64,7 @@ class MomentsController < ApplicationController
   # PUT /moments/1
   # PUT /moments/1.json
   def update
-    @moment = Moment.find_by_muddle(params[:id])
+    @moment ||= Moment.find_by_muddle(params[:id])
 
     respond_to do |format|
       if @moment.update_attributes(params[:moment])
@@ -78,7 +80,7 @@ class MomentsController < ApplicationController
   # DELETE /moments/1
   # DELETE /moments/1.json
   def destroy
-    @moment = Moment.find_by_muddle(params[:id])
+    @moment ||= Moment.find_by_muddle(params[:id])
     @moment.destroy
 
     respond_to do |format|
@@ -86,4 +88,24 @@ class MomentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private 
+
+    def find_moment_by_muddle
+      muddle = params[:id] ? params[:id] : params[:muddle] # rails defaults to using id sometimes
+      @moment ||= Moment.find_by_muddle(muddle)
+    end
+
+    def restrict_access_to_author
+      unless @moment.author_id == current_user.id
+        raise ActionController::RoutingError.new('Not Found') # purposely fake a 404 for unauthorized
+      end
+    end
+
+    def restrict_access_to_author_or_token
+      unless (@moment.author_id == current_user.id) || (@moment.token == params[:token])
+        raise ActionController::RoutingError.new('Not Found') # purposely fake a 404 for unauthorized
+      end
+    end
+
 end
