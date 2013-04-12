@@ -36,17 +36,27 @@ class Moment < ActiveRecord::Base
   def assign_unique_token
     unless(self.token)
       begin
-        self.token = rand(36**8).to_s(36)
+        self.token = rand(36**8).to_s(36).downcase # a-z 
       end while self.class.exists?(:token => token)
     end
   end
 
-  def id_to_base_36
+  def to_param
+    muddle
+  end
+
+  def self.find_by_muddle(muddle)
+    id = self.muddle_to_number(muddle)
+    return self.find(id)
+  end
+
+  def muddle
     return self.id.to_s(36)
   end
 
-  def base_36_to_id(base_number)
-    return base_number.to_i(10)
+  # Convert a muddle to its number equivalent
+  def self.muddle_to_number(muddle)
+    return muddle.to_i(36)
   end
 
 end

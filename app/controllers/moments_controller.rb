@@ -12,8 +12,10 @@ class MomentsController < ApplicationController
 
   # GET /moments/1
   # GET /moments/1.json
+  # GET /m/a23?t=1ad2
+  # GET /m/a23?t=1ad2.json
   def show
-    @moment = Moment.find(params[:id])
+    @moment = Moment.find_by_muddle(params[:muddle])
 
     respond_to do |format|
       format.html # show.html.erb
