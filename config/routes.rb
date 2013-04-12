@@ -1,5 +1,5 @@
 Moments::Application.routes.draw do
-  root :to => "home#index"
+  root :to => "moments#index"
   
   resources :users, :only => [:index, :show, :edit, :update ]
   resources :moments
