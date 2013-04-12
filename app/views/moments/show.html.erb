@@ -1,11 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Muddle:</b>
-  <%= @moment.muddle %>
-</p>
-
-<p>
   <b>Name:</b>
   <%= @moment.name %>
 </p>
@@ -19,17 +14,6 @@
   <b>Author:</b>
   <%= @moment.author.name %>
 </p>
-
-<p>
-  <b>Token:</b>
-  <%= @moment.token %>
-</p>
-
-<p>
-  <b>Trash:</b>
-  <%= @moment.trash %>
-</p>
-
 
 <%= link_to 'Edit', edit_moment_path(@moment) %> |
 <%= link_to 'Back', moments_path %>

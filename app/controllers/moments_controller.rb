@@ -10,8 +10,6 @@ class MomentsController < ApplicationController
     end
   end
 
-  # GET /moments/1
-  # GET /moments/1.json
   # GET /m/a23?t=1ad2
   # GET /m/a23?t=1ad2.json
   def show
@@ -50,7 +48,7 @@ class MomentsController < ApplicationController
 
     respond_to do |format|
       if @moment.save
-        format.html { redirect_to @moment, notice: 'Moment was successfully created.' }
+        format.html { redirect_to muddle_moment_path(@moment), notice: 'Moment was successfully created.' }
         format.json { render json: @moment, status: :created, location: @moment }
       else
         format.html { render action: "new" }
@@ -66,7 +64,7 @@ class MomentsController < ApplicationController
 
     respond_to do |format|
       if @moment.update_attributes(params[:moment])
-        format.html { redirect_to @moment, notice: 'Moment was successfully updated.' }
+        format.html { redirect_to muddle_moment_path(@moment), notice: 'Moment was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

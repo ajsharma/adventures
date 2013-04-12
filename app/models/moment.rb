@@ -45,11 +45,13 @@ class Moment < ActiveRecord::Base
     muddle
   end
 
+  # Find by muddled id
   def self.find_by_muddle(muddle)
     id = self.muddle_to_number(muddle)
     return self.find(id)
   end
 
+  # get muddled id
   def muddle
     return self.id.to_s(36)
   end
