@@ -41,6 +41,10 @@ class MomentsController < ApplicationController
   # POST /moments.json
   def create
     @moment = Moment.new(params[:moment])
+    @moment.author_id = current_user.id
+    @moment.trash = false
+
+    # Alternative?: current_user.moments.create(params[:app])
 
     respond_to do |format|
       if @moment.save
