@@ -14,6 +14,15 @@
   <%= @moment.author.name %>
 </p>
 
+<p>
+  You can share moments with anyone, even non-Moments users, by getting using this link:
+  <%= link_to moment_url(@moment, :token => @moment.token), moment_path(@moment, :token => @moment.token) %>
+  
+</p>
+
+<!-- Explain: -->
+  <!--  Once you get the link, you can send it by email, Facebook, Twitter, instant message, social networks, wherever you want. These links can be accessed by anyone, even without a Dropbox account. Learn how to get links from this Help Center article. -->
+
 <%= link_to 'Edit', edit_moment_path(@moment) %> |
 <%= link_to 'Destroy', @moment, method: :delete, data: { confirm: 'Are you sure?' } %> | 
 <%= link_to 'Back', moments_path %>

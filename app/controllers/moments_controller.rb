@@ -1,5 +1,5 @@
 class MomentsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :new, :create]
+  before_filter :authenticate_user!, :except => [:index, :new, :create, :show]
   before_filter :find_moment_by_muddle, :except => [:index, :new, :create] 
   before_filter :restrict_access_to_author, :only => [:edit, :update, :destroy] 
   before_filter :restrict_access_to_author_or_token, :only => [:show] 
@@ -102,7 +102,7 @@ class MomentsController < ApplicationController
     end
 
     def restrict_access_to_author_or_token
-      unless (@moment.author_id == current_user.id) || (@moment.token == params[:token])
+      unless (@moment.token == params[:token]) || (current_user && (current_user.id == @moment.author_id))
         raise ActionController::RoutingError.new('Not Found') # purposely fake a 404 for unauthorized
       end
     end
