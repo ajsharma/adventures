@@ -41,8 +41,12 @@ class Moment < ActiveRecord::Base
     end
   end
 
-  def id_as_hash
+  def id_to_base_36
     return self.id.to_s(36)
+  end
+
+  def base_36_to_id(base_number)
+    return base_number.to_i(10)
   end
 
 end
