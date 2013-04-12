@@ -15,18 +15,30 @@ class Moment < ActiveRecord::Base
 
   # next we have callbacks
   after_initialize :default_values, if: 'new_record?' # set defaults on new records
-  before_save :set_unique_token
-  
+  before_validation :strip_attributes
+  before_save :assign_unique_token
+
+  # trim whitespace from beginning and end of string attributes  
+  def strip_attributes
+    attribute_names().each do |name|
+      if self.send(name.to_sym).respond_to?(:strip)
+        self.send("#{name}=".to_sym, self.send(name).strip)
+      end
+    end
+  end
+
   # set the default values for the Moment
   def default_values
     self.trash ||= false
   end
 
   # logic for creating a unique token for the Moment
-  def set_unique_token
-    begin
-      self.token = SecureRandom.hex(5) # or whatever you chose like UUID tools
-    end while self.class.exists?(:token => token)
+  def assign_unique_token
+    unless(self.token)
+      begin
+        self.token = SecureRandom.hex(5) # or whatever you chose like UUID tools
+      end while self.class.exists?(:token => token)
+    end
   end
 
 end
