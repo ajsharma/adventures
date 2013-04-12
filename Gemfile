@@ -7,7 +7,7 @@ group :assets do
   gem 'compass-rails'
 end
 gem 'jquery-rails'
-gem "thin", ">= 1.5.0", :group => :production
+gem "thin", ">= 1.5.0"
 gem "pg", ">= 0.15.0"
 gem "guard-bundler", ">= 1.0.0", :group => :development
 gem "guard-rails", ">= 0.4.0", :group => :development
