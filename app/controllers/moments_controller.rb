@@ -1,4 +1,6 @@
 class MomentsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :new, :create]
+
   # GET /moments
   # GET /moments.json
   def index
