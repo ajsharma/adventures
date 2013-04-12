@@ -5,19 +5,19 @@
 </h1>
 
 <p>
-  <b>Description:</b>
+  <strong>Description:</strong>
   <%= @moment.description %>
 </p>
 
 <p>
-  <b>Created by:</b>
+  <strong>Created by:</strong>
   <%= @moment.author.name %>
 </p>
 
 <p>
-  You can share moments with anyone, even non-Moments users, by getting using this link:
+  <strong>Share:</strong>
   <%= link_to moment_url(@moment, :token => @moment.token), moment_path(@moment, :token => @moment.token) %>
-  
+  (You can share moments with anyone, even non-Moments users, by getting using this link)
 </p>
 
 <!-- Explain: -->
