@@ -15,6 +15,7 @@ gem "rb-inotify", ">= 0.9.0", :group => :development, :require => false
 gem "rb-fsevent", ">= 0.9.3", :group => :development, :require => false
 gem "rb-fchange", ">= 0.0.6", :group => :development, :require => false
 gem "bootstrap-sass", ">= 2.3.0.0"
+gem 'devise'
 gem "omniauth", ">= 1.1.3"
 gem "omniauth-facebook"
 gem "cancan", ">= 1.6.9"

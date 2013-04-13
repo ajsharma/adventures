@@ -1,4 +1,6 @@
 Moments::Application.routes.draw do
+  devise_for :users
+
   root :to => "moments#index"
   
   resources :users, :only => [:index, :show, :edit, :update ]

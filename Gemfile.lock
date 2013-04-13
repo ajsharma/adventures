@@ -29,6 +29,7 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     arel (3.0.2)
+    bcrypt-ruby (3.0.1)
     better_errors (0.8.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -55,13 +56,18 @@ GEM
       compass (>= 0.12.2, < 0.14)
     daemons (1.1.9)
     debug_inspector (0.0.2)
+    devise (2.2.3)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (~> 3.1)
+      warden (~> 1.2.1)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
     faraday (0.8.7)
       multipart-post (~> 1.1)
-    ffi (1.6.0)
+    ffi (1.7.0)
     figaro (0.6.3)
       bundler (~> 1.0)
       rails (>= 3, < 5)
@@ -113,6 +119,7 @@ GEM
     omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
+    orm_adapter (0.4.0)
     pg (0.15.1)
     polyglot (0.3.3)
     pry (0.9.12)
@@ -174,6 +181,8 @@ GEM
     uglifier (2.0.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    warden (1.2.1)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -185,6 +194,7 @@ DEPENDENCIES
   cancan (>= 1.6.9)
   coffee-rails (~> 3.2.1)
   compass-rails
+  devise
   figaro (>= 0.6.3)
   guard-bundler (>= 1.0.0)
   guard-rails (>= 0.4.0)
