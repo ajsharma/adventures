@@ -7,7 +7,12 @@ class MomentsController < ApplicationController
   # GET /moments
   # GET /moments.json
   def index
-    @moments = Moment.all
+    if current_user
+      @moments = current_user.moments 
+    else
+      @moments = []
+    end
+
 
     respond_to do |format|
       format.html # index.html.erb
