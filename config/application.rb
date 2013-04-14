@@ -66,5 +66,9 @@ module Moments
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Heroku requires this to be false http://railsapps.github.io/rails-heroku-tutorial.html
+    config.assets.initialize_on_precompile=false
+
   end
 end

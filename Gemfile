@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '1.9.3'
 gem 'rails', '3.2.12'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -22,3 +23,5 @@ gem "rolify", ">= 3.2.0"
 gem "figaro", ">= 0.6.3"
 gem "better_errors", ">= 0.7.2", :group => :development
 gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri_19, :rbx]
+
+gem "heroku"
