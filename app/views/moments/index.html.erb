@@ -5,16 +5,17 @@
   <h1>Your moments</h1>
 
   <ul class="unstyled">
-  <% @moments.each do |moment| %>
-    <li>
-      <h2><%= link_to moment.name, muddle_moment_path(moment) %></h2>
-      <% if moment.description %>
-      <p><%= moment.description %> <%= link_to 'More', muddle_moment_path(moment) %></p>
-      <% end %>
-  </li>
+    <% @moments.each do |moment| %>
+      <li>
+        <h2><%= link_to moment.name, muddle_moment_path(moment) %></h2>
+        <% if moment.description %>
+          <p><%= moment.description %> <%= link_to 'More', muddle_moment_path(moment) %></p>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
 <% end %>
-</ul>
 
+<% if can? :manage, @moment %>
+  <%= link_to 'New Moment', new_moment_path %>
 <% end %>
-
-<%= link_to 'New Moment', new_moment_path %>
