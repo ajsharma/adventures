@@ -2,12 +2,18 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+
+    # only let registered users create moments
+    if user
+        can :create, Moment
+    end
+
     user ||= User.new # guest user (not logged in)
     if user.has_role? :admin
       can :manage, :all
     end
 
-    # 
+    # author can manage moments
     can :manage, Moment, author: user.id
     
     # Define abilities for the passed in user here. For example:
