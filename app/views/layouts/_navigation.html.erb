@@ -1,7 +1,7 @@
 <%= link_to "Moments", root_path, :class => 'brand' %>
 <ul class="nav">
 
-  <% if user_signed_in? %>
+  <% if can? :add, @moment %>
     <li>
     <%= link_to 'New', new_moment_path %>
     </li>
