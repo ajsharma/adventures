@@ -17,7 +17,8 @@ class Ability
     can :manage, Moment, author: user.id
 
     # author can manage hearts
-    can :heart, Response, user: user.id
+    can :heart, Moment, author: user.id
+    # TODO: users with token can heart moments
     
     # Define abilities for the passed in user here. For example:
     #
