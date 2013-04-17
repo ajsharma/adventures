@@ -16,27 +16,26 @@
 
 <p>
   <strong>Share:</strong>
-  <%= link_to muddle_moment_url(@moment, :token => @moment.token), muddle_moment_url(@moment, :token => @moment.token) %>
+  <%= link_to muddle_moment_url(:muddle => @moment.muddle, :token => @moment.token), muddle_moment_url(:muddle => @moment.muddle, :token => @moment.token) %>
   (You can share moments with anyone, even non-Moments users, by getting using this link)
 </p>
-
-<div class="alert alert-info">
-  <span>Joining in Moments, scheduling, and other features coming soon!</span>
-</div>
 
 <!-- Explain: -->
   <!--  Once you get the link, you can send it by email, Facebook, Twitter, instant message, social networks, wherever you want. These links can be accessed by anyone, even without a Dropbox account. Learn how to get links from this Help Center article. -->
 
 <ul class="nav nav-pills">
-  <% if can? :manage, @moment %>
+  <% if can? :heart, @moment %>
     <li>
-      <%= link_to 'Edit', edit_moment_path(@moment) %>
-    </li>
-    <li>
-      <%= link_to 'Destroy', @moment, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to heart_moment_path(@moment) do %>
+        <i class="icon-heart"></i> Heart
+      <% end %>
     </li>
   <% end %>
-  <li>
-    <%= link_to 'Back', moments_path %>
-  </li>
+  <% if can? :manage, @moment %>
+    <li>
+      <%= link_to edit_moment_path(@moment) do %>
+        <i class="icon-edit"></i> Edit
+      <% end %>
+    </li>
+  <% end %>
 </ul>

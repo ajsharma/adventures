@@ -41,10 +41,6 @@ class Moment < ActiveRecord::Base
     end
   end
 
-  def to_param
-    muddle
-  end
-
   # Find by muddled id
   def self.find_by_muddle(muddle)
     id = self.muddle_to_number(muddle)

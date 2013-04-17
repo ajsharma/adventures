@@ -1,8 +1,9 @@
 class MomentsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :new, :create, :show]
-  before_filter :find_moment_by_muddle, :except => [:index, :new, :create] 
-  before_filter :restrict_access_to_author, :only => [:edit, :update, :destroy] 
-  before_filter :restrict_access_to_author_or_token, :only => [:show] 
+  before_filter :authenticate_user!, :except => [:index, :new, :create, :shared]
+  before_filter :find_moment, :except => [:index, :shared] 
+  before_filter :find_moment_by_muddle, :except => [:index, :show, :new, :create] 
+  before_filter :restrict_access_to_author, :only => [:edit, :show, :update, :destroy] 
+  before_filter :restrict_access_to_author_or_token, :only => [:shared] 
 
   # GET /moments
   # GET /moments.json
@@ -13,22 +14,28 @@ class MomentsController < ApplicationController
       @moments = []
     end
 
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @moments }
     end
   end
 
-  # GET /m/a23?t=1ad2
-  # GET /m/a23?t=1ad2.json
+  # GET /moment/1
+  # GET /moment/1.json
   def show
-    @moment ||= Moment.find_by_muddle(params[:muddle])
+    @moment ||= Moment.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @moment }
     end
+  end
+
+  # GET /m/a23?token=1ad2
+  # GET /m/a23?token=1ad2.json
+  def shared 
+    @moment ||= Moment.find_by_muddle(params[:muddle])
+    render :show
   end
 
   # GET /moments/new
@@ -44,7 +51,7 @@ class MomentsController < ApplicationController
 
   # GET /moments/1/edit
   def edit
-    @moment ||= Moment.find_by_muddle(params[:id])
+    @moment ||= Moment.find(params[:id])
   end
 
   # POST /moments
@@ -56,7 +63,7 @@ class MomentsController < ApplicationController
 
     respond_to do |format|
       if @moment.save
-        format.html { redirect_to muddle_moment_path(@moment), notice: 'Moment was successfully created.' }
+        format.html { redirect_to share_moment(:muddle => @moment.muddle, :token => @moment.token), notice: 'Moment was successfully created.' }
         format.json { render json: @moment, status: :created, location: @moment }
       else
         format.html { render action: "new" }
@@ -68,11 +75,11 @@ class MomentsController < ApplicationController
   # PUT /moments/1
   # PUT /moments/1.json
   def update
-    @moment ||= Moment.find_by_muddle(params[:id])
+    @moment ||= Moment.find(params[:id])
 
     respond_to do |format|
       if @moment.update_attributes(params[:moment])
-        format.html { redirect_to muddle_moment_path(@moment), notice: 'Moment was successfully updated.' }
+        format.html { redirect_to share_moment(:muddle => @moment.muddle, :token => @moment.token), notice: 'Moment was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -84,7 +91,7 @@ class MomentsController < ApplicationController
   # DELETE /moments/1
   # DELETE /moments/1.json
   def destroy
-    @moment ||= Moment.find_by_muddle(params[:id])
+    @moment ||= Moment.find(params[:id])
     @moment.destroy
 
     respond_to do |format|
@@ -93,7 +100,28 @@ class MomentsController < ApplicationController
     end
   end
 
+  # POST /moments/heart
+  # POST /moments/heart.json
+  def heart 
+    @moment ||= Moment.find(params[:id])
+    @response = current_user.responses.find(:moment_id => @moment.id)
+
+    respond_to do |format|
+      if @response.heart
+        format.html { redirect_to share_moment(@moment), notice: 'Moment was successfully created.' }
+        format.json { render json: @moment, status: :created, location: @moment }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @moment.errors, status: :unprocessable_entity }
+      end
+    end    
+  end
+
   private 
+
+    def find_moment
+      @moment ||= Moment.find(params[:id])
+    end
 
     def find_moment_by_muddle
       muddle = params[:id] ? params[:id] : params[:muddle] # rails defaults to using id sometimes
