@@ -2,7 +2,9 @@ Moments::Application.routes.draw do
   root :to => "moments#index"
   
   resources :users, :only => [:index, :show, :edit, :update ]
-  resources :moments
+  resources :moments do 
+    resources :responses
+  end
   
   match '/m/:muddle' => 'moments#show', :as => :muddle_moment
 

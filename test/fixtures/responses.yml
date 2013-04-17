@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  moment: 
+  user: 
+  hearts: 1
+
+two:
+  moment: 
+  user: 
+  hearts: 1
