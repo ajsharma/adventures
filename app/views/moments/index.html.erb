@@ -6,8 +6,8 @@
     <% @moments.each do |moment| %>
       <li>
         <h2><%= link_to moment.name, share_moment_path(moment.muddle) %></h2>
-        <% if moment.description %>
-          <p><%= moment.description %></p>
+        <% unless moment.description.blank? %>
+          <%= simple_format moment.description %>
         <% end %>
       </li>
     <% end %>

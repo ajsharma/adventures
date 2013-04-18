@@ -2,10 +2,10 @@
   <%= @moment.name %>
 </h1>
 
-<p>
-  <strong>Description:</strong>
-  <%= simple_format @moment.description %>
-</p>
+<% unless @moment.description.blank? %>
+    <strong><i class="icon-align-left"></i> Description:</strong>
+    <%= simple_format @moment.description %>
+<% end %>
 
 <p>
   <strong>Created by:</strong>
