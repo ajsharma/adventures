@@ -26,7 +26,7 @@
 <ul class="nav nav-pills">
   <% if can? :heart, @moment %>
     <li>
-      <%= link_to heart_moment_path(@moment) do %>
+      <%= link_to heart_moment_path(@moment), :class => "btn", :method => :post do %>
         <i class="icon-heart"></i> Heart
       <% end %>
     </li>

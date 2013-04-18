@@ -63,7 +63,7 @@ class MomentsController < ApplicationController
 
     respond_to do |format|
       if @moment.save
-        format.html { redirect_to share_moment(:muddle => @moment.muddle, :token => @moment.token), notice: 'Moment was successfully created.' }
+        format.html { redirect_to share_moment_path(:muddle => @moment.muddle), notice: 'Moment was successfully created.' }
         format.json { render json: @moment, status: :created, location: @moment }
       else
         format.html { render action: "new" }
@@ -79,7 +79,7 @@ class MomentsController < ApplicationController
 
     respond_to do |format|
       if @moment.update_attributes(params[:moment])
-        format.html { redirect_to share_moment(:muddle => @moment.muddle, :token => @moment.token), notice: 'Moment was successfully updated.' }
+        format.html { redirect_to share_moment_path(:muddle => @moment.muddle), notice: 'Moment was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -104,11 +104,12 @@ class MomentsController < ApplicationController
   # POST /moments/heart.json
   def heart 
     @moment ||= Moment.find(params[:id])
-    @response = current_user.responses.find(:moment_id => @moment.id)
+    # @response = current_user.responses.find_by_moment(@moment)
+    @response = Response.where(:user_id => current_user.id, :moment_id => @moment.id).first_or_create
 
     respond_to do |format|
-      if @response.heart
-        format.html { redirect_to share_moment(@moment), notice: 'Moment was successfully created.' }
+      if @response.heart!
+        format.html { redirect_to share_moment_path(:muddle => @moment.muddle), notice: 'Moment was hearted successfully.' }
         format.json { render json: @moment, status: :created, location: @moment }
       else
         format.html { render action: "new" }
