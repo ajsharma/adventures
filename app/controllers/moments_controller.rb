@@ -57,7 +57,7 @@ class MomentsController < ApplicationController
   # POST /moments
   # POST /moments.json
   def create
-    @moment = current_user.moments.build(params[:moment])
+    @moment = current_user.authored_moments.build(params[:moment])
 
     respond_to do |format|
       if @moment.save
