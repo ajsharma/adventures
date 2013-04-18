@@ -14,6 +14,6 @@
   </ul>
 <% end %>
 
-<% if can? :add, @moment %>
+<% if can? :create, @moment %>
   <%= link_to 'New Moment', new_moment_path %>
 <% end %>
