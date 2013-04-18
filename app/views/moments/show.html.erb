@@ -16,7 +16,7 @@
   <p>
     <strong><i class="icon-share"></i> Share:</strong>
     <%= link_to share_moment_url(:muddle => @moment.muddle, :token => @moment.token), share_moment_url(:muddle => @moment.muddle, :token => @moment.token) %>
-    (You can share moments with anyone, even non-Moments users, by getting using this link)
+    <span class="text-warning">Anyone with this link can view this moment.</span>
   </p>
 <% end %>
 
