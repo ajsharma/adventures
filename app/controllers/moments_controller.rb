@@ -9,7 +9,7 @@ class MomentsController < ApplicationController
   # GET /moments.json
   def index
     if current_user
-      @moments = current_user.authored_moments
+      @moments = current_user.moments 
     else
       @moments = []
     end
@@ -59,10 +59,11 @@ class MomentsController < ApplicationController
   def create
     @moment = current_user.moments.build(params[:moment])
 
-    # Alternative?: current_user.moments.create(params[:app])
-
     respond_to do |format|
       if @moment.save
+        # create a response for the user
+        @response = Response.where(:user_id => current_user.id, :moment_id => @moment.id).first_or_create!
+
         format.html { redirect_to share_moment_path(:muddle => @moment.muddle), notice: 'Moment was successfully created.' }
         format.json { render json: @moment, status: :created, location: @moment }
       else
