@@ -12,16 +12,25 @@
   <%= @moment.author.name %>
 </p>
 
-<p>
-  <strong><i class="icon-share"></i> Share:</strong>
-  <%= link_to muddle_moment_url(:muddle => @moment.muddle, :token => @moment.token), muddle_moment_url(:muddle => @moment.muddle, :token => @moment.token) %>
-  (You can share moments with anyone, even non-Moments users, by getting using this link)
-</p>
+<% if can? :share, @moment %>
+  <p>
+    <strong><i class="icon-share"></i> Share:</strong>
+    <%= link_to muddle_moment_url(:muddle => @moment.muddle, :token => @moment.token), muddle_moment_url(:muddle => @moment.muddle, :token => @moment.token) %>
+    (You can share moments with anyone, even non-Moments users, by getting using this link)
+  </p>
+<% end %>
 
 <!-- Explain: -->
   <!--  Once you get the link, you can send it by email, Facebook, Twitter, instant message, social networks, wherever you want. These links can be accessed by anyone, even without a Dropbox account. Learn how to get links from this Help Center article. -->
 
 <ul class="nav nav-pills">
+  <% unless user_signed_in? %>
+    <li>
+      <%= link_to signin_path, :class => "btn btn-primary", :method => :post do %>
+        <i class="icon-heart icon-white"></i> Login to heart this
+      <% end %>
+    </li>
+  <% end %>
   <% if can? :heart, @moment %>
     <li>
       <%= link_to heart_moment_path(@moment), :class => "btn", :method => :post do %>

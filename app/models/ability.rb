@@ -15,6 +15,7 @@ class Ability
 
     # author can manage moments
     can :manage, Moment, author: user.id
+    can :share, Moment, author: user.id
 
     # author can manage hearts
     can :heart, Moment, author: user.id
