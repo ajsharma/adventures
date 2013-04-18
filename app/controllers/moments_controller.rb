@@ -3,7 +3,7 @@ class MomentsController < ApplicationController
   before_filter :find_moment, :except => [:index, :shared, :new, :create]
   before_filter :find_moment_by_muddle, :except => [:index, :show, :new, :create] 
   before_filter :restrict_access_to_author, :only => [:edit, :show, :update, :destroy] 
-  before_filter :restrict_access_to_author_or_token, :only => [:shared] 
+  before_filter :restrict_access_to_respondent_or_token, :only => [:shared] 
 
   # GET /moments
   # GET /moments.json
@@ -137,9 +137,9 @@ class MomentsController < ApplicationController
       end
     end
 
-    def restrict_access_to_author_or_token
+    def restrict_access_to_respondent_or_token
       # TODO: replace with cancan
-      unless (@moment.token == params[:token]) || (current_user && (current_user.id == @moment.author_id))
+      unless (@moment.token == params[:token]) || (current_user && Response.exists?(:user_id => current_user.id, :moment_id => @moment.id))
         raise ActionController::RoutingError.new('Not Found') # purposely fake a 404 for unauthorized
       end
     end

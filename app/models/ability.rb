@@ -6,6 +6,7 @@ class Ability
     # only let registered users create moments
     if user
         can :create, Moment
+        can :heart, Moment
     end
 
     user ||= User.new # guest user (not logged in)
@@ -20,6 +21,7 @@ class Ability
     # author can manage hearts
     can :heart, Moment, author_id: user.id
     # TODO: users with token can heart moments
+
     
     # Define abilities for the passed in user here. For example:
     #
