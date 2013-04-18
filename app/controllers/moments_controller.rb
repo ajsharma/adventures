@@ -1,4 +1,6 @@
 class MomentsController < ApplicationController
+  include ActionView::Helpers::TextHelper
+
   before_filter :authenticate_user!, :except => [:index, :new, :create, :shared]
   before_filter :find_moment, :except => [:index, :shared] 
   before_filter :find_moment_by_muddle, :except => [:index, :show, :new, :create] 
@@ -109,7 +111,7 @@ class MomentsController < ApplicationController
 
     respond_to do |format|
       if @response.heart!
-        format.html { redirect_to share_moment_path(:muddle => @moment.muddle), notice: 'Moment was hearted successfully.' }
+        format.html { redirect_to share_moment_path(:muddle => @moment.muddle), notice: 'Moment was hearted successfully ' + pluralize(@response.hearts_count, 'times') + '.' }
         format.json { render json: @moment, status: :created, location: @moment }
       else
         format.html { render action: "new" }
