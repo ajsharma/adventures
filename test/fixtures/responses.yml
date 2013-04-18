@@ -3,9 +3,9 @@
 one:
   moment: 
   user: 
-  hearts: 1
+  hearts_count: 1
 
 two:
   moment: 
   user: 
-  hearts: 1
+  hearts_count: 1

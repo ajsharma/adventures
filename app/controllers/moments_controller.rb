@@ -9,7 +9,7 @@ class MomentsController < ApplicationController
   # GET /moments.json
   def index
     if current_user
-      @moments = current_user.moments 
+      @moments = current_user.authored_moments
     else
       @moments = []
     end
