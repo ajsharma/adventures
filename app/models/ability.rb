@@ -14,11 +14,11 @@ class Ability
     end
 
     # author can manage moments
-    can :manage, Moment, author: user.id
-    can :share, Moment, author: user.id
+    can :manage, Moment, author_id: user.id
+    can :share, Moment, author_id: user.id
 
     # author can manage hearts
-    can :heart, Moment, author: user.id
+    can :heart, Moment, author_id: user.id
     # TODO: users with token can heart moments
     
     # Define abilities for the passed in user here. For example:
