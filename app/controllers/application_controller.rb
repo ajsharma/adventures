@@ -4,6 +4,11 @@ class ApplicationController < ActionController::Base
   helper_method :user_signed_in?
   helper_method :correct_user?
 
+  # helpers allow access to helpers like `pluralize`
+  def helpers
+    ActionController::Base.helpers
+  end
+
   private
     def current_user
       begin
