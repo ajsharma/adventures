@@ -23,6 +23,18 @@
 <!-- Explain: -->
   <!--  Once you get the link, you can send it by email, Facebook, Twitter, instant message, social networks, wherever you want. These links can be accessed by anyone, even without a Dropbox account. Learn how to get links from this Help Center article. -->
 
+<% unless @moment.responses.empty? %>
+  <h2>Hearted By</h2>
+
+  <ul class="unstyled">
+    <% @moment.hearted_responses.each do |response| %>
+      <li>
+        <%= response.user.name %> <span>x<%= response.hearts_count %></span>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <ul class="nav nav-pills">
   <% unless user_signed_in? %>
     <li>
