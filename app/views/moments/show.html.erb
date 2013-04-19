@@ -23,7 +23,7 @@
 <!-- Explain: -->
   <!--  Once you get the link, you can send it by email, Facebook, Twitter, instant message, social networks, wherever you want. These links can be accessed by anyone, even without a Dropbox account. Learn how to get links from this Help Center article. -->
 
-<% unless @moment.responses.empty? %>
+<% unless @moment.hearted_responses.empty? %>
   <h2>Hearted By</h2>
 
   <ul class="unstyled">
@@ -50,7 +50,7 @@
       <% end %>
     </li>
   <% end %>
-  <% if can? :manage, @moment %>
+  <% if can? :edit, @moment %>
     <li>
       <%= link_to edit_moment_path(@moment) do %>
         <i class="icon-edit"></i> Edit
