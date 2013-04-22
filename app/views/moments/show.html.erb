@@ -29,7 +29,7 @@
   <ul class="unstyled">
     <% @moment.hearted_responses.each do |response| %>
       <li>
-        <%= response.user.name %> <span>x<%= response.hearts_count %></span>
+        <%= response.user.name %> <span><%= response.hearts_count %>x</span>
       </li>
     <% end %>
   </ul>
