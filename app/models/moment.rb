@@ -10,7 +10,7 @@ class Moment < ActiveRecord::Base
   # followed by association macros  
   belongs_to :author, :foreign_key => "author_id", :class_name => "User"
   has_many :responses
-  has_many :positive_responses, :class_name => "Response", :conditions => "hearts_count > 0"
+  has_many :positive_responses, :class_name => "Response", :conditions => "hearts_count > 0", :order => 'created_at ASC'
   
   # and validation macros
   validates :name, :presence => true
