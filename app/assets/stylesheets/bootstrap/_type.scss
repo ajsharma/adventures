@@ -134,6 +134,11 @@ ol.inline {
     padding-left: 5px;
     padding-right: 5px;
   }
+
+  // ensure left alignment with text
+  > li:first-child { 
+    padding-left: 0;
+  }
 }
 
 // Description Lists

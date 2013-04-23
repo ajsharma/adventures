@@ -2,15 +2,20 @@
   <%= @moment.name %>
 </h1>
 
+<% unless @moment.positive_responses.empty? %>
+  <ul class="unstyled inline">
+    <% @moment.positive_responses.each do |response| %>
+      <li>
+        <%= image_tag response.user.image_by_dimension, :class => "img-circle" %> <%= response.user.name %> <span class="muted"><%= response.hearts_count %>x</span>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <% unless @moment.description.blank? %>
     <strong><i class="icon-align-left"></i> Description:</strong>
     <%= auto_link(simple_format(@moment.description), :html => { :target => "_blank" }) %>
 <% end %>
-
-<p>
-  <strong>Created by:</strong>
-  <%= image_tag @moment.author.image_by_dimension, :class => "img-circle" %> <%= @moment.author.name %> 
-</p>
 
 <% if can? :share, @moment %>
   <p>
@@ -22,18 +27,6 @@
 
 <!-- Explain: -->
   <!--  Once you get the link, you can send it by email, Facebook, Twitter, instant message, social networks, wherever you want. These links can be accessed by anyone, even without a Dropbox account. Learn how to get links from this Help Center article. -->
-
-<% unless @moment.hearted_responses.empty? %>
-  <h2>Hearted By</h2>
-
-  <ul class="unstyled">
-    <% @moment.hearted_responses.each do |response| %>
-      <li>
-        <%= image_tag response.user.image_by_dimension, :class => "img-circle" %> <%= response.user.name %> <span><%= response.hearts_count %>x</span>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
 
 <ul class="nav nav-pills">
   <% unless user_signed_in? %>
