@@ -9,7 +9,7 @@
 
 <p>
   <strong>Created by:</strong>
-  <%= image_tag @moment.author.image_by_dimension %> <%= @moment.author.name %> 
+  <%= image_tag @moment.author.image_by_dimension, :class => "img-circle" %> <%= @moment.author.name %> 
 </p>
 
 <% if can? :share, @moment %>
@@ -29,7 +29,7 @@
   <ul class="unstyled">
     <% @moment.hearted_responses.each do |response| %>
       <li>
-        <%= image_tag response.user.image_by_dimension %> <%= response.user.name %> <span><%= response.hearts_count %>x</span>
+        <%= image_tag response.user.image_by_dimension, :class => "img-circle" %> <%= response.user.name %> <span><%= response.hearts_count %>x</span>
       </li>
     <% end %>
   </ul>
