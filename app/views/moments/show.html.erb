@@ -4,7 +4,7 @@
 
 <% unless @moment.description.blank? %>
     <strong><i class="icon-align-left"></i> Description:</strong>
-    <%= simple_format @moment.description %>
+    <%= auto_link(simple_format(@moment.description), :html => { :target => "_blank" }) %>
 <% end %>
 
 <p>
