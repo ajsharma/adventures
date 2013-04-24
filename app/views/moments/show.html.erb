@@ -2,6 +2,7 @@
   <%= @moment.name %>
 </h1>
 
+<%# responses %>
 <% unless @moment.positive_responses.empty? %>
   <ul class="unstyled inline">
     <% @moment.positive_responses.each do |response| %>
@@ -12,11 +13,13 @@
   </ul>
 <% end %>
 
+<%# description %>
 <% unless @moment.description.blank? %>
     <strong><i class="icon-align-left"></i> Description:</strong>
     <%= auto_link(simple_format(@moment.description), :html => { :target => "_blank" }) %>
 <% end %>
 
+<%# share link %>
 <% if can? :share, @moment %>
   <p>
     <strong><i class="icon-share"></i> Share:</strong>
