@@ -5,22 +5,20 @@
   <ul class="unstyled">
     <% @moments.each do |moment| %>
       <li>
-        <h2><%= link_to moment.name, share_moment_path(moment.muddle) %></h2>
+        <%= link_to share_moment_path(moment.muddle) do %></h2>
+          <h2><%= moment.name %></h2>
 
-        <%# responses %>
-        <% unless moment.positive_responses.empty? %>
-          <ul class="unstyled inline">
-            <% moment.positive_responses.each do |response| %>
-              <li>
-                <%= image_tag response.user.image_by_dimension, :class => "img-circle" %>
-              </li>
-            <% end %>
-          </ul>
-        <% end %>
+          <%# responses %>
+          <% unless moment.positive_responses.empty? %>
+            <ul class="unstyled inline">
+              <% moment.positive_responses.each do |response| %>
+                <li>
+                  <%= image_tag response.user.image_by_dimension, :class => "img-circle" %>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
 
-        <%# description %>
-        <% unless moment.description.blank? %>
-          <%= auto_link(simple_format(moment.description), :html => { :target => "_blank" }) %>
         <% end %>
       </li>
     <% end %>
