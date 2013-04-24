@@ -1,0 +1,4 @@
+@mixin background-photo($url) {
+    background: url($url) no-repeat center center fixed;
+    @include background-size(cover);
+}
