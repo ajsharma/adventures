@@ -29,11 +29,6 @@ class Moment < ActiveRecord::Base
     end
   end
 
-  # set the default values for the Moment
-  def default_values
-    self.trash ||= false
-  end
-
   # logic for creating a unique token for the Moment
   def assign_unique_token
     unless(self.token)
@@ -58,5 +53,11 @@ class Moment < ActiveRecord::Base
   def self.muddle_to_number(muddle)
     return muddle.to_i(36)
   end
+
+  private 
+    # set the default values for the Moment
+    def default_values
+      self.trash ||= false
+    end
 
 end
