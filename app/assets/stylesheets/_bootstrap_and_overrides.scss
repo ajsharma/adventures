@@ -1,12 +1,16 @@
+// variables
+@import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
+$sansFontFamily: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+// imports
 @import "bootstrap/bootstrap";
 body { padding-top: 60px; } // fixed header padding
 @import "bootstrap/responsive";
 
-@import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
 
+// body overall
 body {
     background: #eeeeee;
-    font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 // application nav bar
