@@ -12,7 +12,12 @@
 */
 
 @import "compass";
-@import "base";
+@import "variables";
 @import "bootstrap_and_overrides";
 
-@import "layouts/footer"
+@import "layouts/footer";
+
+// controller specific styles
+@import "home";
+@import "moments";
+@import "responses";

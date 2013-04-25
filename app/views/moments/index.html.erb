@@ -2,9 +2,9 @@
 <% unless @moments.empty? %>
   <h1>Your moments</h1>
 
-  <ul class="unstyled">
+  <ul class="moments unstyled">
     <% @moments.each do |moment| %>
-      <li>
+      <li class="moment">
         <%= link_to share_moment_path(moment.muddle) do %></h2>
           <h2><%= moment.name %></h2>
 
