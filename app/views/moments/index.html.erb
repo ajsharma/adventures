@@ -1,11 +1,11 @@
 <%# Block of user's moments %>
 <% unless @moments.empty? %>
-  <h1>Your moments</h1>
 
-  <ul class="moments unstyled">
+  <ul class="moments browsing-list">
+    <h1>Your moments</h1>
     <% @moments.each do |moment| %>
       <li class="moment">
-        <%= link_to share_moment_path(moment.muddle) do %></h2>
+        <%= link_to share_moment_path(moment.muddle), :class => "browsing-list-item" do %></h2>
           <h2><%= moment.name %></h2>
 
           <%# responses %>
@@ -23,8 +23,4 @@
       </li>
     <% end %>
   </ul>
-<% end %>
-
-<% if can? :create, Moment %>
-  <%= link_to 'New Moment', new_moment_path %>
 <% end %>

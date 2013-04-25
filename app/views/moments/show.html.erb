@@ -1,56 +1,58 @@
-<h1>
-  <%= @moment.name %>
-</h1>
+<div class="inside">
+  <h1>
+    <%= @moment.name %>
+  </h1>
 
-<%# responses %>
-<% unless @moment.positive_responses.empty? %>
-  <ul class="unstyled inline">
-    <% @moment.positive_responses.each do |response| %>
+  <%# responses %>
+  <% unless @moment.positive_responses.empty? %>
+    <ul class="unstyled inline">
+      <% @moment.positive_responses.each do |response| %>
+        <li>
+          <%= image_tag response.user.image_by_dimension, :class => "img-circle" %> <%= response.user.name %> <span class="muted"><%= response.hearts_count %>x</span>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%# description %>
+  <% unless @moment.description.blank? %>
+      <strong><i class="icon-align-left"></i> Description:</strong>
+      <%= auto_link(simple_format(@moment.description), :html => { :target => "_blank" }) %>
+  <% end %>
+
+  <%# share link %>
+  <% if can? :share, @moment %>
+    <p>
+      <strong><i class="icon-share"></i> Share:</strong>
+      <%= link_to share_moment_url(:muddle => @moment.muddle, :token => @moment.token), share_moment_url(:muddle => @moment.muddle, :token => @moment.token) %>
+      <span class="text-warning">Anyone with this link can view this moment.</span>
+    </p>
+  <% end %>
+
+  <!-- Explain: -->
+    <!--  Once you get the link, you can send it by email, Facebook, Twitter, instant message, social networks, wherever you want. These links can be accessed by anyone, even without a Dropbox account. Learn how to get links from this Help Center article. -->
+
+  <ul class="nav nav-pills">
+    <% unless user_signed_in? %>
       <li>
-        <%= image_tag response.user.image_by_dimension, :class => "img-circle" %> <%= response.user.name %> <span class="muted"><%= response.hearts_count %>x</span>
+        <%= link_to signin_path, :class => "btn btn-primary", :method => :post do %>
+          <i class="icon-heart icon-white"></i> Login to heart this
+        <% end %>
+      </li>
+    <% end %>
+    <% if can? :heart, @moment %>
+      <li>
+        <%= link_to heart_moment_path(@moment), :class => "btn", :method => :post do %>
+          <i class="icon-heart"></i> Heart
+        <% end %>
+      </li>
+    <% end %>
+    <% if can? :edit, @moment %>
+      <li>
+        <%= link_to edit_moment_path(@moment) do %>
+          <i class="icon-edit"></i> Edit
+        <% end %>
       </li>
     <% end %>
   </ul>
-<% end %>
-
-<%# description %>
-<% unless @moment.description.blank? %>
-    <strong><i class="icon-align-left"></i> Description:</strong>
-    <%= auto_link(simple_format(@moment.description), :html => { :target => "_blank" }) %>
-<% end %>
-
-<%# share link %>
-<% if can? :share, @moment %>
-  <p>
-    <strong><i class="icon-share"></i> Share:</strong>
-    <%= link_to share_moment_url(:muddle => @moment.muddle, :token => @moment.token), share_moment_url(:muddle => @moment.muddle, :token => @moment.token) %>
-    <span class="text-warning">Anyone with this link can view this moment.</span>
-  </p>
-<% end %>
-
-<!-- Explain: -->
-  <!--  Once you get the link, you can send it by email, Facebook, Twitter, instant message, social networks, wherever you want. These links can be accessed by anyone, even without a Dropbox account. Learn how to get links from this Help Center article. -->
-
-<ul class="nav nav-pills">
-  <% unless user_signed_in? %>
-    <li>
-      <%= link_to signin_path, :class => "btn btn-primary", :method => :post do %>
-        <i class="icon-heart icon-white"></i> Login to heart this
-      <% end %>
-    </li>
-  <% end %>
-  <% if can? :heart, @moment %>
-    <li>
-      <%= link_to heart_moment_path(@moment), :class => "btn", :method => :post do %>
-        <i class="icon-heart"></i> Heart
-      <% end %>
-    </li>
-  <% end %>
-  <% if can? :edit, @moment %>
-    <li>
-      <%= link_to edit_moment_path(@moment) do %>
-        <i class="icon-edit"></i> Edit
-      <% end %>
-    </li>
-  <% end %>
-</ul>
+</div>

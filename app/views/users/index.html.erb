@@ -1,16 +1,22 @@
-<h3>Users</h3>
-<div class="span8">
-  <dl>
+<%# Block of user's moments %>
+<% unless @users.empty? %>
+
+  <ul class="users browsing-list">
+    <h1>Users</h1>
     <% @users.each do |user| %>
-      <dt><b>Username</b> <%= link_to user.name, user %></dt>
-      <dd><b>Email</b> <%= user.email %></dd>
-      <dd><b>Created At</b> <%= user.created_at.to_date %></dd>
-      <dd><b>Roles</b> <%= user.roles.first.name.titleize unless user.roles.first.nil? %></dd>
-      <dd>
-        <a data-toggle="modal" href="#role-options-<%= user.id %>" class="btn btn-mini" type="button">Change role</a>
-        <%= render user %>
-      </dd>
-      <dd><%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini') unless user == current_user %></dd>
+      <li>
+        <dl class="browsing-list-item">
+          <dt><b>Username</b> <%= link_to user.name, user %></dt>
+          <dd><b>Email</b> <%= user.email %></dd>
+          <dd><b>Created At</b> <%= user.created_at.to_date %></dd>
+          <dd><b>Roles</b> <%= user.roles.first.name.titleize unless user.roles.first.nil? %></dd>
+          <dd>
+            <a data-toggle="modal" href="#role-options-<%= user.id %>" class="btn btn-mini" type="button">Change role</a>
+            <%= render user %>
+          </dd>
+          <dd><%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini') unless user == current_user %></dd>
+        </dl>
+      </li>
     <% end %>
-  </dl>
-</div>
+  </ul>
+<% end %>

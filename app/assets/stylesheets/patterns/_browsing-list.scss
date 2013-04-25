@@ -1,0 +1,25 @@
+// The browsing-list is a pattern design to represent a list of interactable links
+// Example code:
+// <ul class="browsing-list">
+//   <h1>Title of List</h1>
+//   <li class="browsing-list-item"></li>
+//   <li class="browsing-list-item"></li>
+//   ...
+// </ul>
+
+.browsing-list {
+  @extend .unstyled;
+  margin-bottom: 0;
+}
+
+.browsing-list > h1,
+.browsing-list > li {
+  border-bottom: 1px solid rgba(0, 0, 0, .15);
+}
+
+.browsing-list > h1,
+.browsing-list-item {
+  display: block;
+  padding: $paddingLarge;  
+  margin: 0;
+}
