@@ -10,13 +10,13 @@
           <dd><b>Email</b> <%= user.email %></dd>
           <dd><b>Created At</b> <%= user.created_at.to_date %></dd>
           <dd><b>Roles</b> <%= user.roles.first.name.titleize unless user.roles.first.nil? %></dd>
-          <ul class="nav nav-pills">
-            <li>
-              <a data-toggle="modal" href="#role-options-<%= user.id %>" class="btn btn-mini" type="button">Change role</a>
+          <div class="btn-group">
+
+            <a data-toggle="modal" href="#role-options-<%= user.id %>" class="btn btn-mini" type="button">Change role</a>
               <%= render user %>
-            </li>
-            <li><%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini') unless user == current_user %></li>
-          </ul>
+
+              <%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini') unless user == current_user %>
+          </div>
         </dl>
       </li>
     <% end %>
