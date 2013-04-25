@@ -35,6 +35,12 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def authenticate_user_or_welcome!
+      if !current_user
+        redirect_to welcome_page_url
+      end
+    end
+
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_path, :alert => exception.message

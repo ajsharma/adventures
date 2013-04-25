@@ -1,5 +1,6 @@
 class MomentsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :new, :create, :shared]
+  before_filter :authenticate_user_or_welcome!, :only => [:index]
   before_filter :find_moment, :except => [:index, :shared, :new, :create]
   before_filter :find_moment_by_muddle, :except => [:index, :show, :new, :create] 
   before_filter :restrict_access_to_author, :only => [:edit, :show, :update, :destroy] 

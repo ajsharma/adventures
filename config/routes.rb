@@ -10,6 +10,8 @@ Moments::Application.routes.draw do
   match '/moments/:id/heart' => 'moments#heart', :as => :heart_moment, :via => :post
   match '/m/:muddle' => 'moments#shared', :as => :share_moment, :via => :get
 
+  match 'welcome' => 'pages#welcome', :as => :welcome_page
+
   match '/auth/:provider/callback' => 'sessions#create'
   match '/auth/failure' => 'sessions#failure'
   
