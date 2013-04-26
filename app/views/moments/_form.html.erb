@@ -1,16 +1,12 @@
 <%= form_for(@moment) do |f| %>
+  <%# errors %>
   <% if @moment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@moment.errors.count, "error") %> prohibited this moment from being saved:</h2>
-
-      <ul>
-      <% @moment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+    <% @moment.errors.full_messages.each do |message| %>
+      <p class="text-error"><%= message %></p>
+    <% end %>
   <% end %>
 
+  <%# inputs %>
   <div class="field">
     <%= f.label :name, "I want too..." %>
     <%= f.text_field :name, :placeholder => "Type what you want to do.", :autofocus => "autofocus" %>
