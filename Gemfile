@@ -26,3 +26,5 @@ gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri
 
 gem "heroku"
 gem "rails_autolink"
+
+gem 'newrelic_rpm', :group => :production, :require => false
