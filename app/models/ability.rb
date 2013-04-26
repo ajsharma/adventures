@@ -4,22 +4,21 @@ class Ability
   def initialize(user)
 
     # only let registered users create moments
-    if user
-        can :create, Moment
-        can :heart, Moment
+    if user.nil? 
+        # can :create, Moment
+        # can :heart, Moment
+    else 
+        if user.has_role? :admin
+          can :manage, :all
+        end
+
+        # author can manage moments
+        can :manage, Moment, author_id: user.id
+        can :share, Moment, author_id: user.id
+
+        # author can manage hearts
+        can :heart, Moment, author_id: user.id
     end
-
-    user ||= User.new # guest user (not logged in)
-    if user.has_role? :admin
-      can :manage, :all
-    end
-
-    # author can manage moments
-    can :manage, Moment, author_id: user.id
-    can :share, Moment, author_id: user.id
-
-    # author can manage hearts
-    can :heart, Moment, author_id: user.id
     # TODO: users with token can heart moments
 
     
