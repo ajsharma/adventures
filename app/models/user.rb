@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
     "https://graph.facebook.com/" + uid + "/picture?type=" + type
   end
 
-  def image_by_dimension(width = 20, height = 20)
+  def image_by_dimension(width = 40, height = 40)
     "https://graph.facebook.com/" + uid + "/picture?width=" + width.to_s + "&" + "height=" + height.to_s
   end
 
