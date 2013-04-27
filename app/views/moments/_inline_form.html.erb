@@ -1,0 +1,10 @@
+<%= form_for(@moment) do |f| %>
+  <%# inputs %>
+  <div class="field">
+    <%= f.label :name, "I want too..." %>
+    <div class="input-append">
+      <%= f.text_field :name, :placeholder => "Type what you want to do.", :autofocus => "autofocus" %>
+      <%= f.submit "Next", :class => 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

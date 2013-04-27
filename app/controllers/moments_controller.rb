@@ -15,6 +15,8 @@ class MomentsController < ApplicationController
       @moments = []
     end
 
+    @moment = Moment.new
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @moments }
