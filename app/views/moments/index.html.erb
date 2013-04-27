@@ -6,10 +6,10 @@
 <%# Block of user's moments %>
 <% unless @moments.empty? %>
 
-  <ul class="moments browsing-list">
+  <ul class="moments browsing-list card">
     <h1>Your moments</h1>
     <% @moments.each do |moment| %>
-      <li class="moment">
+      <li class="moment card">
         <%= link_to share_moment_path(moment.muddle), :class => "browsing-list-item" do %></h2>
           <h2><%= moment.name %></h2>
 
