@@ -40,13 +40,13 @@
         <% end %>
       </li>
     <% end %>
-    <% if can? :heart, @moment %>
+    <%# if can? :heart, @moment %>
       <li>
         <%= link_to heart_moment_path(@moment), :class => "btn", :method => :post do %>
           <i class="icon-heart"></i> Heart
         <% end %>
       </li>
-    <% end %>
+    <%# end %>
     <% if can? :edit, @moment %>
       <li>
         <%= link_to edit_moment_path(@moment) do %>
