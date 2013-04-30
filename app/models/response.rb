@@ -8,7 +8,7 @@ class Response < ActiveRecord::Base
   attr_accessible :hearts_count
 
   # followed by association macros  
-  belongs_to :moment
+  belongs_to :adventure
   belongs_to :user
   
   # and validation macros
@@ -21,7 +21,7 @@ class Response < ActiveRecord::Base
   end
 
   private 
-    # set the default values for the Moment
+    # set the default values for the Adventure
     def default_values
       self.hearts_count = 1
     end

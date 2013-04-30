@@ -1,12 +1,12 @@
 <div class="inside card">
   <h1>
-    <%= @moment.name %>
+    <%= @adventure.name %>
   </h1>
 
   <%# responses %>
-  <% unless @moment.positive_responses.empty? %>
+  <% unless @adventure.positive_responses.empty? %>
     <ul class="unstyled inline">
-      <% @moment.positive_responses.each do |response| %>
+      <% @adventure.positive_responses.each do |response| %>
         <li>
           <%= image_tag response.user.image_by_dimension, :class => "img-circle" %> <%= response.user.name %> <span class="muted"><%= response.hearts_count %>x</span>
         </li>
@@ -15,17 +15,17 @@
   <% end %>
 
   <%# description %>
-  <% unless @moment.description.blank? %>
+  <% unless @adventure.description.blank? %>
       <strong><i class="icon-align-left"></i> Description:</strong>
-      <%= auto_link(simple_format(@moment.description), :html => { :target => "_blank" }) %>
+      <%= auto_link(simple_format(@adventure.description), :html => { :target => "_blank" }) %>
   <% end %>
 
   <%# share link %>
-  <% if can? :share, @moment %>
+  <% if can? :share, @adventure %>
     <p>
       <strong><i class="icon-share"></i> Share:</strong>
-      <%= link_to share_moment_url(:muddle => @moment.muddle, :token => @moment.token), share_moment_url(:muddle => @moment.muddle, :token => @moment.token) %>
-      <span class="text-warning">Anyone with this link can view this moment.</span>
+      <%= link_to share_adventure_url(:muddle => @adventure.muddle, :token => @adventure.token), share_adventure_url(:muddle => @adventure.muddle, :token => @adventure.token) %>
+      <span class="text-warning">Anyone with this link can view this adventure.</span>
     </p>
   <% end %>
 
@@ -40,16 +40,16 @@
         <% end %>
       </li>
     <% end %>
-    <%# if can? :heart, @moment %>
+    <%# if can? :heart, @adventure %>
       <li>
-        <%= link_to heart_moment_path(@moment), :class => "btn", :method => :post do %>
+        <%= link_to heart_adventure_path(@adventure), :class => "btn", :method => :post do %>
           <i class="icon-heart"></i> Heart
         <% end %>
       </li>
     <%# end %>
-    <% if can? :edit, @moment %>
+    <% if can? :edit, @adventure %>
       <li>
-        <%= link_to edit_moment_path(@moment) do %>
+        <%= link_to edit_adventure_path(@adventure) do %>
           <i class="icon-edit"></i> Edit
         <% end %>
       </li>

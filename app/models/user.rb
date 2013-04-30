@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
   validates_presence_of :name
 
   has_many :responses
-  has_many :moments, :through => :responses, :class_name => "Moment", :order => 'responses.created_at DESC'
-  has_many :authored_moments, :foreign_key => "author_id", :class_name => "Moment"
+  has_many :adventures, :through => :responses, :class_name => "Adventure", :order => 'responses.created_at DESC'
+  has_many :authored_adventures, :foreign_key => "author_id", :class_name => "Adventure"
 
   def self.create_with_omniauth(auth)
     create! do |user|

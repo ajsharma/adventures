@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  moment: 
+  adventure: 
   user: 
   hearts_count: 1
 
 two:
-  moment: 
+  adventure: 
   user: 
   hearts_count: 1

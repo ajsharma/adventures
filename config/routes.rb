@@ -1,14 +1,14 @@
-Moments::Application.routes.draw do
-  root :to => "moments#index"
+Adventures::Application.routes.draw do
+  root :to => "adventures#index"
   
   resources :users, :only => [:index, :show, :edit, :update ]
 
-  resources :moments do 
+  resources :adventures do 
     resources :responses
   end
 
-  match '/moments/:id/heart' => 'moments#heart', :as => :heart_moment, :via => :post
-  match '/m/:muddle' => 'moments#shared', :as => :share_moment, :via => :get
+  match '/adventures/:id/heart' => 'adventures#heart', :as => :heart_adventure, :via => :post
+  match '/m/:muddle' => 'adventures#shared', :as => :share_adventure, :via => :get
 
   match 'welcome' => 'pages#welcome', :as => :welcome_page
 

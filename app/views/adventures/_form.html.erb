@@ -1,7 +1,7 @@
-<%= form_for(@moment) do |f| %>
+<%= form_for(@adventure) do |f| %>
   <%# errors %>
-  <% if @moment.errors.any? %>
-    <% @moment.errors.full_messages.each do |message| %>
+  <% if @adventure.errors.any? %>
+    <% @adventure.errors.full_messages.each do |message| %>
       <p class="text-error"><%= message %></p>
     <% end %>
   <% end %>

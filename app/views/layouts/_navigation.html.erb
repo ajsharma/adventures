@@ -1,9 +1,9 @@
-<%= link_to "Moments", root_path, :class => 'brand' %>
+<%= link_to "Adventures", root_path, :class => 'brand' %>
 <ul class="nav pull-right">
 
-  <% if can? :create, Moment %>
+  <% if can? :create, Adventure %>
     <li>
-    <%= link_to 'New', new_moment_path %>
+    <%= link_to 'New', new_adventure_path %>
     </li>
   <% end %>
 

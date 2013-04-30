@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Moments::Application.load_tasks
+Adventures::Application.load_tasks

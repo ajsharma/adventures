@@ -3,23 +3,23 @@ class Ability
 
   def initialize(user)
 
-    # only let registered users create moments
+    # only let registered users create adventures
     if user.nil? 
-        # can :create, Moment
-        # can :heart, Moment
+        # can :create, Adventure
+        # can :heart, Adventure
     else 
         if user.has_role? :admin
           can :manage, :all
         end
 
-        # author can manage moments
-        can :manage, Moment, author_id: user.id
-        can :share, Moment, author_id: user.id
+        # author can manage adventures
+        can :manage, Adventure, author_id: user.id
+        can :share, Adventure, author_id: user.id
 
         # author can manage hearts
-        can :heart, Moment, author_id: user.id
+        can :heart, Adventure, author_id: user.id
     end
-    # TODO: users with token can heart moments
+    # TODO: users with token can heart adventures
 
     
     # Define abilities for the passed in user here. For example:

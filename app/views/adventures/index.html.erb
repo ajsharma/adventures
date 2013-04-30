@@ -1,0 +1,31 @@
+<div class="inside">
+  <h1>Create a new adventure</h1>
+  <%= render 'inline_form' %>
+</div>
+
+<%# Block of user's adventures %>
+<% unless @adventures.empty? %>
+
+  <ul class="adventures browsing-list card">
+    <h1>Your adventures</h1>
+    <% @adventures.each do |adventure| %>
+      <li class="adventure card">
+        <%= link_to share_adventure_path(adventure.muddle), :class => "browsing-list-item" do %></h2>
+          <h2><%= adventure.name %></h2>
+
+          <%# responses %>
+          <% unless adventure.positive_responses.empty? %>
+            <ul class="unstyled inline">
+              <% adventure.positive_responses.each do |response| %>
+                <li>
+                  <%= image_tag response.user.image_by_dimension, :class => "img-circle" %>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

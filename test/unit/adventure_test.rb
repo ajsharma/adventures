@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MomentTest < ActiveSupport::TestCase
+class AdventureTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

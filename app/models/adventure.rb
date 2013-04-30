@@ -1,4 +1,4 @@
-class Moment < ActiveRecord::Base
+class Adventure < ActiveRecord::Base
   
   # keep the default scope first (if any)
 
@@ -29,7 +29,7 @@ class Moment < ActiveRecord::Base
     end
   end
 
-  # logic for creating a unique token for the Moment
+  # logic for creating a unique token for the Adventure
   def assign_unique_token
     unless(self.token)
       begin
@@ -55,7 +55,7 @@ class Moment < ActiveRecord::Base
   end
 
   private 
-    # set the default values for the Moment
+    # set the default values for the Adventure
     def default_values
       self.trash ||= false
     end
