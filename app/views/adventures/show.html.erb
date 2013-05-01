@@ -15,9 +15,15 @@
   <% end %>
 
   <%# description %>
-  <% unless @adventure.description.blank? %>
-      <strong><i class="icon-align-left"></i> Description:</strong>
-      <%= auto_link(simple_format(@adventure.description), :html => { :target => "_blank" }) %>
+  <% if @adventure.description.blank? %>
+      <% if can? :edit, @adventure %>
+        <%= link_to edit_adventure_path(@adventure) do %>
+          <i class="icon-edit"></i> Add description
+        <% end %>
+      <% end %>
+  <% else %>
+    <strong><i class="icon-align-left"></i> Description:</strong>
+    <%= auto_link(simple_format(@adventure.description), :html => { :target => "_blank" }) %>
   <% end %>
 
   <%# share link %>
