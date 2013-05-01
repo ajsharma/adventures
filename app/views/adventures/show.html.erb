@@ -45,14 +45,13 @@
           <i class="icon-heart icon-white"></i> Login to heart this
         <% end %>
       </li>
-    <% end %>
-    <%# if can? :heart, @adventure %>
+    <% else %>
       <li>
         <%= link_to heart_adventure_path(@adventure), :class => "btn", :method => :post do %>
           <i class="icon-heart"></i> Heart
         <% end %>
       </li>
-    <%# end %>
+    <% end %>
     <% if can? :edit, @adventure %>
       <li>
         <%= link_to edit_adventure_path(@adventure) do %>
