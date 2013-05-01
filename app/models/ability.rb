@@ -18,6 +18,7 @@ class Ability
 
         # author can manage hearts
         can :heart, Adventure, author_id: user.id
+        can :heart, Adventure # needs to be updated to token access only
     end
     # TODO: users with token can heart adventures
 

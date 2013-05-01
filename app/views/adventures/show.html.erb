@@ -45,7 +45,8 @@
           <i class="icon-heart icon-white"></i> Login to heart this
         <% end %>
       </li>
-    <% else %>
+    <% end %>
+    <% if can? :heart, @adventure %>
       <li>
         <%= link_to heart_adventure_path(@adventure), :class => "btn", :method => :post do %>
           <i class="icon-heart"></i> Heart
